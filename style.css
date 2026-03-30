@@ -10,6 +10,7 @@ body {
   background-size: 300% 300%;
   animation: gradientMove 10s ease infinite;
   color: #555;
+  overflow-x: hidden;
 }
 
 @keyframes gradientMove {
@@ -31,12 +32,25 @@ section {
 h1 {
   font-size: 3rem;
   color: #444;
+  margin-bottom: 10px;
 }
 
 h2 {
   font-weight: 300;
   font-size: 1.25rem;
   max-width: 400px;
+  line-height: 1.6;
+}
+
+/* typing biar ga kaku */
+#typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1 }
+  25%, 75% { opacity: 0 }
 }
 
 button {
@@ -56,10 +70,22 @@ button:hover {
 
 .card {
   background: rgba(255,255,255,0.5);
-  padding: 20px;
+  padding: 25px;
   border-radius: 20px;
   backdrop-filter: blur(15px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hidden {
@@ -76,7 +102,8 @@ button:hover {
 .gallery {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 .gallery img {
@@ -86,5 +113,15 @@ button:hover {
 }
 
 .gallery img:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(1deg);
+}
+
+/* confetti canvas */
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
